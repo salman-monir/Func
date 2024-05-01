@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define   IOS            ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define ll  long long
+#define endl "\n"
+#define pb push_back
+ll cnt;
+void  BFS(int v,int n,vector<int>adj[]){
+     bool vis[n];
+     memset(vis,0,sizeof(vis));
+     vis[v]=1;
+     queue<int>q;
+     q.push(v);
+     while(!q.empty()){
+        int x;
+        x=q.front();q.pop();
+        cout<<x<<" ";
+        for(auto i:adj[x]){
+            if(!vis[i]){
+                q.push(i);
+                vis[i]=1;
+            }
+        }
+     }
+}
+int main(){
+    IOS
+
+    ll tc;
+    cin>>tc;
+    while(tc--){
+            int n,m;
+            cin>>n>>m;
+            vector<int>adj[n+1];
+            int u,v;
+            for(int i=0;i<m;i++){
+                cin>>u>>v;
+                adj[u].pb(v);
+                adj[v].pb(u);
+            }
+
+            BFS(1,n+1,adj);
+            }
+
+    return 0;
+}
